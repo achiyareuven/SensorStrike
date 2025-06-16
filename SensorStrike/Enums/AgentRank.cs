@@ -8,7 +8,7 @@ namespace SensorStrike.Enums
 {
     public enum AgentRank
     {
-        RegularAgent,
+        FootSoldier,
         SquadLeader,
         SeniorCommander,
         OrganizationLeader
