@@ -17,7 +17,7 @@ namespace SensorStrike.Game
             Console.WriteLine(matches);
             
 
-            if (agant.SupportsCounterAttack() && agant.GetCounterAttackInterval())
+            if (agant.SupportsCounterAttack() && agant.IsAttackNow())
             {
                 agant.PerformCounterAttack();
                 Console.WriteLine("Agant attack");

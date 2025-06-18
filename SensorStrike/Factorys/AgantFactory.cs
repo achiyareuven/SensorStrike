@@ -16,7 +16,8 @@ namespace SensorStrike.Factorys
             {
                 case AgentRank.FootSoldier:
                     return new FootSoldier(fullName, idNumber, affiliation);
-                    
+                case AgentRank.SquadLeader:
+                    return new SpuadLeader(fullName, idNumber, affiliation);
                 default:
                     return null;
                  

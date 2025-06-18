@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SensorStrike.Enums;
 using SensorStrike.Sensors;
+using SensorStrike.halper;
 
 namespace SensorStrike.Agants
 {
@@ -60,8 +61,20 @@ namespace SensorStrike.Agants
 
         public abstract bool SupportsCounterAttack();
 
-        public abstract bool GetCounterAttackInterval();
+        public abstract bool IsAttackNow();
 
         public abstract void PerformCounterAttack();
+
+
+        protected void RemoveRandomSensoe(int count)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < count && i <AttachedSensors.Count; i++)
+            {
+                int index = rand.Next(AttachedSensors.Count);
+                AttachedSensors.RemoveAt(index);
+            }
+        }
+
     }
 }

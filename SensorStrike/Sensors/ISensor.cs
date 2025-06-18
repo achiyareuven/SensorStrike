@@ -15,6 +15,6 @@ namespace SensorStrike.Sensors
 
         bool HasEffect();
 
-        ISensor Clone();
+        
     }
 }

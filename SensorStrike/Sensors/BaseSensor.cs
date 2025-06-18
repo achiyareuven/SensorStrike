@@ -36,9 +36,6 @@ namespace SensorStrike.Sensors
 
 
 
-        public virtual ISensor Clone()
-        {
-            return new BaseSensor(this.Type);
-        }
+      
     }
 }
