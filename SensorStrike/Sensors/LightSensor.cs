@@ -17,9 +17,14 @@ namespace SensorStrike.Sensors
             return true;
         }
         public override string Action(IranAgent agant)
-        {
-            return $" Light sensor revealed: Agent Rank : {agant.Rank}" +
-                $":Agant affiliation : {agant.Affiliation}";
+
+        {   
+            if (agant.Weaknesses.Contains(this.Type))
+            { 
+                return $" Light sensor revealed: Agent Rank : {agant.Rank}" +
+                 $":Agant affiliation : {agant.Affiliation}";
+            }
+            return null ;
         }
     }
 }

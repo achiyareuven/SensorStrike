@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,18 @@ namespace SensorStrike.Factorys
                 case SensorType.Thermal:
                     return new BaseSensor(SensorType.Thermal);
                 case SensorType.Signal:
-                    return new BaseSensor(SensorType.Signal);
+                    return new SignalSensor();
                 case SensorType.Motion:
-                    return new BaseSensor(SensorType.Motion);
+                    return new MotionSensor();
                 case SensorType.Light:
-                    return new BaseSensor(SensorType.Light);
+                    return new LightSensor();
                 case SensorType.Pulse:
-                    return new BaseSensor(SensorType.Pulse);
+                    return new PulseSensor();
+                case SensorType.Magnetic:
+                    return new MagneticSensor();
 
-                default: return null;
+                default:
+                    throw new ArgumentException($"Unknown sensor type: {sensorType}");
 
             }
         }

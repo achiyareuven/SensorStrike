@@ -27,11 +27,15 @@ namespace SensorStrike.Agants
             IdNumber = idNumber;
             Affiliation = affiliation;
         }
+        public void setTurn()
+        {
+            TurnCounter++;
+        }
 
         public void AddSensor(ISensor sensor)
         {
             AttachedSensors.Add(sensor);
-            TurnCounter++;
+            
         }
         public int CountMatchingSensors()
         {
@@ -43,7 +47,7 @@ namespace SensorStrike.Agants
 
             foreach (var sensor in AttachedSensors)
             {
-                sensor.Activate();
+              //  sensor.Activate();
                 if (!sensor.HasEffect()) continue;
 
                 if (required.ContainsKey(sensor.Type) && required[sensor.Type] > 0)
@@ -79,6 +83,7 @@ namespace SensorStrike.Agants
         {
             AttachedSensors.RemoveAll(sensor => !sensor.HasEffect());
         }
+
 
     }
 }

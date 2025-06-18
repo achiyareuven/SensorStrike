@@ -16,7 +16,8 @@ namespace SensorStrike.Game
 
         public StageManager()
         {
-            _agants.Add(AgentFactory.CreateAgent(AgentRank.FootSoldier, "7808990", "aly muahmad", "Revolutionary Guards"));
+            _agants.Add(AgentFactory.CreateAgent(AgentRank.FootSoldier, "aly muahmad", " 7808990", "Revolutionary Guards"));
+            _agants.Add(AgentFactory.CreateAgent(AgentRank.SquadLeader, "Ahmed", "9321892", "Quds Force"));
         }
         public bool HasMoreStages() => _currentStage < _agants.Count;
 

@@ -16,6 +16,7 @@ namespace SensorStrike.Sensors
         public override void Activate()
         {
             _activation--;
+            Console.WriteLine($"attttt left {_activation}");
         }
         public override bool HasEffect()
         {

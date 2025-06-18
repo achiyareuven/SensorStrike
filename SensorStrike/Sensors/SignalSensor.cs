@@ -17,6 +17,7 @@ namespace SensorStrike.Sensors
 
         public override string Action(IranAgent agent)
         {
+            if (!agent.Weaknesses.Contains(this.Type)) return null;
             return $" Signal sensor revealed: Agent Rank = {agent.Rank}";
         }
         

@@ -18,6 +18,7 @@ namespace SensorStrike.Sensors
         }
         public override string Action(IranAgent agant)
         {
+            if (!agant.Weaknesses.Contains(this.Type)) return null;
             Random random= new Random();
             int index = random.Next(agant.Weaknesses.Count);
             return $"Motion Sensor revealed one corect weaknes: {agant.Weaknesses[index]}";
