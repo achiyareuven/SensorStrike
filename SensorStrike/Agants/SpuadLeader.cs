@@ -34,6 +34,7 @@ namespace SensorStrike.Agants
         }
         public override void PerformCounterAttack()
         {
+            RemoveBrokenSensors();
             RemoveRandomSensoe(1); 
         }
 

@@ -36,6 +36,21 @@ namespace SensorStrike.Game
                         case "2":
                             _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Thermal));
                             break;
+                        case "3":
+                            _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Pulse));
+                            break;
+                        case "4":
+                            _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Motion));
+                            break;
+                        case "5":
+                            _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Magnetic));
+                            break;
+                        case "6":
+                            _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Signal));
+                            break;
+                        case "7":
+                            _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Light));
+                            break;
                         default: Console.WriteLine("Invalid input");
                             continue;
 

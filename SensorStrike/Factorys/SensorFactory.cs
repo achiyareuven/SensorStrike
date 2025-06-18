@@ -18,6 +18,15 @@ namespace SensorStrike.Factorys
                     return new BaseSensor(SensorType.Audio);
                 case SensorType.Thermal:
                     return new BaseSensor(SensorType.Thermal);
+                case SensorType.Signal:
+                    return new BaseSensor(SensorType.Signal);
+                case SensorType.Motion:
+                    return new BaseSensor(SensorType.Motion);
+                case SensorType.Light:
+                    return new BaseSensor(SensorType.Light);
+                case SensorType.Pulse:
+                    return new BaseSensor(SensorType.Pulse);
+
                 default: return null;
 
             }

@@ -14,7 +14,7 @@ namespace SensorStrike.Game
         {
             agant.AddSensor(sensor);
             int matches =agant.CountMatchingSensors();
-            Console.WriteLine(matches);
+            Console.WriteLine($"your sensor matches:{matches}");
             
 
             if (agant.SupportsCounterAttack() && agant.IsAttackNow())

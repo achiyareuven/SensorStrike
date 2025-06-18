@@ -31,11 +31,15 @@ namespace SensorStrike.Sensors
         {
             return null;
         }
+        public virtual bool IsBlockingAttack()=>false;
+
+        public virtual void BlockingAttack() { }
 
 
 
 
 
-      
+
+
     }
 }

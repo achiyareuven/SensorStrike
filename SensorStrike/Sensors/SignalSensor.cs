@@ -19,6 +19,7 @@ namespace SensorStrike.Sensors
         {
             return $" Signal sensor revealed: Agent Rank = {agent.Rank}";
         }
+        
 
 
     }

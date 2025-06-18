@@ -75,6 +75,10 @@ namespace SensorStrike.Agants
                 AttachedSensors.RemoveAt(index);
             }
         }
+        protected void RemoveBrokenSensors()
+        {
+            AttachedSensors.RemoveAll(sensor => !sensor.HasEffect());
+        }
 
     }
 }
