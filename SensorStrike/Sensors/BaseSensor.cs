@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SensorStrike.Enums;
-
+using SensorStrike.Agants;
 namespace SensorStrike.Sensors
 {
     public class BaseSensor : ISensor
@@ -24,6 +24,17 @@ namespace SensorStrike.Sensors
         {
             return true; 
         }
+        public virtual bool IsAction()
+        { return false; }
+
+        public virtual string Action(IranAgent agant)
+        {
+            return null;
+        }
+
+
+
+
 
         public virtual ISensor Clone()
         {

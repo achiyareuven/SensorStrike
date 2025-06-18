@@ -26,7 +26,7 @@ namespace SensorStrike.Agants
         {}
         public override bool SupportsCounterAttack() => false;
 
-        public override int GetCounterAttackInterval() => 0;
+        public override bool GetCounterAttackInterval() => false;
 
         public override void PerformCounterAttack() { }
 

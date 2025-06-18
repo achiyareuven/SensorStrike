@@ -18,7 +18,7 @@ namespace SensorStrike.Game
         {
             _agants.Add(AgentFactory.CreateAgent(AgentRank.FootSoldier, "7808990", "aly muahmad", "Revolutionary Guards"));
         }
-        public bool IsGameOver() => _currentStage < _agants.Count;
+        public bool HasMoreStages() => _currentStage < _agants.Count;
 
         public void NextAgant() => _currentStage++;
 

@@ -30,6 +30,7 @@ namespace SensorStrike.Agants
         public void AddSensor(ISensor sensor)
         {
             AttachedSensors.Add(sensor);
+            TurnCounter++;
         }
         public int CountMatchingSensors()
         {
@@ -41,6 +42,7 @@ namespace SensorStrike.Agants
 
             foreach (var sensor in AttachedSensors)
             {
+                sensor.Activate();
                 if (!sensor.HasEffect()) continue;
 
                 if (required.ContainsKey(sensor.Type) && required[sensor.Type] > 0)
@@ -58,7 +60,7 @@ namespace SensorStrike.Agants
 
         public abstract bool SupportsCounterAttack();
 
-        public abstract int GetCounterAttackInterval();
+        public abstract bool GetCounterAttackInterval();
 
         public abstract void PerformCounterAttack();
     }
