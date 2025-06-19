@@ -18,6 +18,7 @@ namespace SensorStrike.UI
             Console.WriteLine($"5: {SensorType.Magnetic}");
             Console.WriteLine($"6: {SensorType.Signal}");
             Console.WriteLine($"7: {SensorType.Light}");
+            Console.WriteLine();
         }
     }
 }

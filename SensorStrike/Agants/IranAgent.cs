@@ -76,10 +76,11 @@ namespace SensorStrike.Agants
             for (int i = 0; i < count && i <AttachedSensors.Count; i++)
             {
                 int index = rand.Next(AttachedSensors.Count);
+                Console.WriteLine($"agent removd sensoe {AttachedSensors[index].GetType().Name}");  
                 AttachedSensors.RemoveAt(index);
             }
         }
-        protected void RemoveBrokenSensors()
+        public void RemoveBrokenSensors()
         {
             AttachedSensors.RemoveAll(sensor => !sensor.HasEffect());
         }

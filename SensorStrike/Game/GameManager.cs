@@ -22,12 +22,14 @@ namespace SensorStrike.Game
             while (_stageManager.HasMoreStages())
             {
                 _currentAgent = _stageManager.GetCurrentAgent();
-                Console.WriteLine($"            New Agent Investigation {_currentAgent.FullName}");
+                GameDisplay.PrintNewAgentHeader(_currentAgent.FullName);
+
                 while (!_currentAgent.IsExposed())
                 {
                     Menu.ShowMenu();
-                    Console.WriteLine("chose sensor;");
+                    Console.Write("chose sensor: ");
                     string sensorInput = Console.ReadLine();
+
                     switch(sensorInput)
                     {
                         case "1":
@@ -51,7 +53,7 @@ namespace SensorStrike.Game
                         case "7":
                             _logicGame.Run(_currentAgent, SensorFactory.CreaatSensor(SensorType.Light));
                             break;
-                        default: Console.WriteLine("Invalid input");
+                        default: Console.WriteLine("Invalid input try again");
                             continue;
 
 
@@ -59,10 +61,9 @@ namespace SensorStrike.Game
                     }
 
                 }
-                Console.WriteLine(" Agent exposed!");
                 _stageManager.NextAgant();
             }
-            Console.WriteLine("game over");
+            GameDisplay.PrintGameOver();
 
         }
 

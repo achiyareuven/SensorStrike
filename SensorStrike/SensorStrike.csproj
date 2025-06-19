@@ -63,6 +63,7 @@
     <Compile Include="Sensors\MotionSensor.cs" />
     <Compile Include="Sensors\PulseSensor.cs" />
     <Compile Include="Sensors\SignalSensor.cs" />
+    <Compile Include="UI\GamePinter.cs" />
     <Compile Include="UI\Menu.cs" />
   </ItemGroup>
   <ItemGroup>

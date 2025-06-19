@@ -9,14 +9,16 @@ namespace SensorStrike.Sensors
 {
     public class PulseSensor : BaseSensor
     {
-        private int _activation = 3;
+        private int _activation = 4;
 
         public PulseSensor() : base(SensorType.Pulse) { }
 
         public override void Activate()
         {
             _activation--;
-            Console.WriteLine($"attttt left {_activation}");
+            Console.WriteLine($"{this.GetType().Name} left:{_activation}");
+            
+         
         }
         public override bool HasEffect()
         {

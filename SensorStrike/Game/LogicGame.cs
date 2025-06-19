@@ -5,58 +5,67 @@ using System.Text;
 using System.Threading.Tasks;
 using SensorStrike.Agants;
 using SensorStrike.Sensors;
+using SensorStrike.UI;
 
 namespace SensorStrike.Game
 {
     public class LogicGame
     {
-        public void Run(IranAgent agant ,ISensor sensor)
+        public void Run(IranAgent agent, ISensor sensor)
         {
-            Console.WriteLine();
-            if (agant.Weaknesses.Contains(sensor.Type))  sensor.Activate();
-            foreach (var sebsor in agant.AttachedSensors)  sensor.Activate(); 
+            GameDisplay.PrintTurnSeparator();
 
-            agant.setTurn();
-
-            if (agant.Weaknesses.Contains(sensor.Type))
+            if (agent.Weaknesses.Contains(sensor.Type))
             {
-                agant.AddSensor(sensor);
+                agent.AddSensor(sensor);
             }
-     
-            int matches =agant.CountMatchingSensors();
-            Console.WriteLine($"your sensor matches:{matches}");
 
-            if (agant.IsExposed()) return;
-            
-
-            if (agant.SupportsCounterAttack() && agant.IsAttackNow())
+            foreach (var s in agent.AttachedSensors)
             {
-                var sensorBlock = agant.AttachedSensors.OfType<BaseSensor>().FirstOrDefault(sens => sens.IsBlockingAttack());
-                if (sensorBlock != null && agant.Weaknesses.Contains(sensorBlock.Type)) 
+                s.Activate();
+                if (!s.HasEffect()) GameDisplay.PrintSensorBroken(s);
+            }
+
+            agent.setTurn();
+            agent.RemoveBrokenSensors();
+
+            GameDisplay.PrintAttachedSensors(agent.AttachedSensors);
+
+            int matches = agent.CountMatchingSensors();
+            GameDisplay.PrintMatches(matches, agent.Weaknesses.Count);
+
+            if (agent.IsExposed())
+            {
+                GameDisplay.PrintAgentExposed(agent.FullName);
+                return;
+            }
+
+            if (agent.SupportsCounterAttack() && agent.IsAttackNow())
+            {
+                var sensorBlock = agent.AttachedSensors
+                    .OfType<BaseSensor>()
+                    .FirstOrDefault(s => s.IsBlockingAttack() && agent.Weaknesses.Contains(s.Type));
+
+                if (sensorBlock != null)
                 {
                     sensorBlock.BlockingAttack();
-                    Console.WriteLine($"your sensor blocked attack");
+                    GameDisplay.PrintBlockedAttack();
                 }
                 else
                 {
-                    agant.PerformCounterAttack();
-                    Console.WriteLine("Agant attack");
-
+                    agent.PerformCounterAttack();
+                    GameDisplay.PrintCounterAttack();
                 }
             }
+
             if (sensor is BaseSensor sen && sen.IsAction())
             {
-                string info = sen.Action(agant);
-                if (info!=null)
-                {
-                    
-                    Console.WriteLine(info);
-                }
-                
+                string info = sen.Action(agent);
+                if (!string.IsNullOrWhiteSpace(info))
+                    GameDisplay.PrintSensorAction(info);
             }
-            bool exposed = agant.IsExposed();
-         
-
         }
+
+
     }
 }
